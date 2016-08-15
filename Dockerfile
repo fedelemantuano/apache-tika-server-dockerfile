@@ -12,5 +12,5 @@ RUN apt-get -yqq update \
     && rm -rf /var/lib/apt/lists/*
 RUN wget https://www.apache.org/dist/tika/tika-server-${TIKA_VERSION}.jar -O /opt/${TIKA_JAR}
 EXPOSE 9998
-ENTRYPOINT java -Xmx{TIKA_MEMORY} -jar /opt/${TIKA_JAR} -h 0.0.0.0
+ENTRYPOINT java -Xmx${TIKA_MEMORY} -jar /opt/${TIKA_JAR} -h 0.0.0.0
 CMD ["--log", "debug"]
