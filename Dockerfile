@@ -1,9 +1,9 @@
 FROM buildpack-deps:jessie-curl
 MAINTAINER Fedele Mantuano "mantuano.fedele@gmail.com"
-ENV REFRESHED_AT="2016-08-10" \
+ENV REFRESHED_AT="2016-11-12" \
     TIKA_JAR="tika-server.jar" \
     TIKA_MEMORY="1g" \
-    TIKA_VERSION="1.13"
+    TIKA_VERSION="1.14"
 LABEL description="Apache Tika Server" \
     version=${TIKA_VERSION}
 RUN apt-get -yqq update \
