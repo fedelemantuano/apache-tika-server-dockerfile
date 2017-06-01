@@ -1,0 +1,28 @@
+sudo: required
+
+services:
+    - docker
+
+branches:
+    only:
+        - master
+
+before_install:
+
+    # get last version
+    - export VER=$(git describe --tags --abbrev=0)
+    - echo Apache Tika Server version $VER
+
+    # make images
+    - docker build -t $DOCKER_USERNAME/apache-tika-server:$VER .
+
+script:
+    - echo Apache Tika Server version $VER
+
+after_success:
+    - echo Apache Tika Server version $VER
+    - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+    - docker push $DOCKER_USERNAME/apache-tika-server:$VER
+
+notifications:
+    slack: spamscope:$SLACK_KEY

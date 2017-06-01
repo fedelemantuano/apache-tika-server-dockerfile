@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fedelemantuano/apache-tika-server-dockerfile.svg?branch=master)](https://travis-ci.org/fedelemantuano/apache-tika-server-dockerfile)
+
 # apache-tika-server-dockerfile
 
 **apache-tika-server-dockerfile** is a dockerfile to build [fmantuano/apache-tika-server](https://hub.docker.com/r/fmantuano/apache-tika-server/) Docker image.
