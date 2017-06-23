@@ -8,6 +8,9 @@ branches:
         - master
 
 before_install:
+    # install tools
+    - sudo apt-get -qq update
+    - sudo apt-get install -y curl
 
     # get last version
     - export VER=$(git describe --tags --abbrev=0)
@@ -18,9 +21,12 @@ before_install:
 
 script:
     - echo Apache Tika Server version $VER
+    #- docker run -d -p 0.0.0.0:9998:9998 fmantuano/apache-tika-server:$VER
+    #- echo "Test" > test.txt
+    #- curl -X GET http://localhost:9998/tika
+    #- curl -T test.txt http://localhost:9998/rmeta
 
 after_success:
-    - echo Apache Tika Server version $VER
     - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
     - docker push $DOCKER_USERNAME/apache-tika-server:$VER
 
