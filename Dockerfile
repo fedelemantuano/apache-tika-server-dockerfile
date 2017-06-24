@@ -8,8 +8,7 @@ LABEL description="Apache Tika Server" \
 RUN apt-get -yqq update \
     && apt-get -yqq install \
         openjdk-8-jre \
-    && rm -rf /var/lib/apt/lists/*
-RUN wget https://www.apache.org/dist/tika/tika-server-${TIKA_VERSION}.jar -O /opt/${TIKA_JAR}
+    && rm -rf /var/lib/apt/lists/* \
+    && wget https://www.apache.org/dist/tika/tika-server-${TIKA_VERSION}.jar -O /opt/${TIKA_JAR}
 EXPOSE 9998
 ENTRYPOINT java -Xmx${TIKA_MEMORY} -jar /opt/${TIKA_JAR} -h 0.0.0.0
-CMD ["--log", "debug"]
